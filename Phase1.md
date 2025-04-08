@@ -1,0 +1,101 @@
+# The Project: A website with a booking system for a small business offering different Farm Experiences (name will be updated once I come up with something clever)
+
+# User Personas
+## 1. The admin user
+
+Who?
++ The entrepreneur Ed, 55
+Tech Fluency?
++ Okayish, with clear instructions can manage new things too, can get frustrated if things are too difficult
+
+Goals:
++ Marketing and selling their services online
++ Having a booking system online, wants to avoid being on the phone all day everyday
++ Business up and running before summer
+
+Challenges:
++ Has a business idea and the facilities, but no website or social media to promote it or sell the service
++ Doesn't know anything about web development so can't do it on their own
++ The UI must be simple enough for easy use, tech fluency is not super high
+
+Needs:
++ A nice, functional website
++ Can set available time slots for booking on the website
++ A system where the booked resources show up in designated email/calendar
+
+
+## 2. The customer Claire, 40
+
+Who?
++ The end user booking the services the entrepreneur is offering
+Tech Fluency?
++ Can be anything
+
+Goals:
++ Wants to invest in new experiences
++ Wants to surprise friends/family with new experiences
+
+Challenges:
++ Avoids visually unappealing/shady-looking websites
++ A lot of choices
+
+Needs:
++ A professional-looking website
++ Good usability on the website
++ Confirmation after booking
+
+#Use Cases and Usage Scenarios
+
+## 1. Browsing the website
+
+User: Customer
+Functionality: 
++ The website is easy to navigate, logical and nice to look at
+Outcome: 
++ The user gets the information they came to look for
+
+## 2. Setting bookable dates on the website
+
+User: Admin
+Functionality:
++ Choosing the date and time to appear on the website's "Booking" section
++ Publishing the dates
+Outcome:
++ A form appears for the admin to fill/choose the dates
++ Confirmation is asked ("Are you sure you want to publish these dates?") before publishing
++ The published dates will appear on the "Booking" section of the website
+
+## 3. Booking
+
+User: Customer
+Functionality:
++ Customer browses the available dates on the website
++ Customer chooses the the date they want and book it
+Outcome:
++ When a "Book this" is clicked, a form will appear where the customer is to add their contact info
++ Confirmation after successful booking on the browser
++ The booked resource will no longer be available on the website
++ Booking info will be sent to the customers' given email address
+
+## 4. Viewing the booked resources
+
+User: Admin
+Functionality:
++ The admin can see the booked resources
+Outcome:
++ The booked resources will appear in the admin view, their email/calendar
+
+#UI Prototypes
+
+Right now I am thinking of making a sort of single page website structure for this apart from the booking features, but I will have to see when building it does it work. In Figma (see the link) there are frames for the website, the adding of resources (admin only) and the booking view (customers).
+
+Figma: 
+
+#Information Architecture and Technical Design
+
+![Info](misc/info.png)
+
+
+
+
+#Project Management and User Testing
