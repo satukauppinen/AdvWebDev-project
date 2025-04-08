@@ -89,7 +89,7 @@ Outcome:
 
 Right now I am thinking of making a sort of single page website structure for this apart from the booking features, but I will have to see when building it does it work. In Figma (see the link) there are frames for the website, the adding of resources (admin only) and the booking view (customers).
 
-Figma: 
+Figma: <a href="https://www.figma.com/design/pHGL1FJdy7MFOtc2dkONPe/Project-prototype?node-id=0-1&p=f&t=xsOFfMLHcIBBZHQO-0">click here to see the prototype</a>
 
 # Information Architecture and Technical Design
 
