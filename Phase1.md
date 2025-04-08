@@ -85,17 +85,136 @@ Functionality:
 Outcome:
 + The booked resources will appear in the admin view, their email/calendar
 
-#UI Prototypes
+# UI Prototypes
 
 Right now I am thinking of making a sort of single page website structure for this apart from the booking features, but I will have to see when building it does it work. In Figma (see the link) there are frames for the website, the adding of resources (admin only) and the booking view (customers).
 
 Figma: 
 
-#Information Architecture and Technical Design
+# Information Architecture and Technical Design
 
 ![Info](misc/info.png)
 
+The picture above contains the information architecture in a simplified way. 
+Home: The default view the user sees when opening the website. From there the content can be accessed either by the navi bar which will stay visible all the time, or by scrolling.
+About us: Introduction 
+Services: The services/service packs offered to customers with explanations. Under each one will be the possibility to book the resource by clicking a button
+Contact info: Ways to contact and location
+
+The 6 service booking choices: Clicking will lead to the booking where the date is chosen and customer contact info given upon booking
+Booking: will lead to either successfull booking or in case something goes wrong or the session is discarded an error message is displayed
+
+## Technical Design
+
+Frontend:
++ React for the responsive user interface
++ styling with CSS and SCSS, making sure the responsiveness works across devices
++ possibly Bootstrap
++ forms designing for the admin and booking functionalities with validation
+
+Backend:
++ Node.js with Express for handling the bookings and interactions with database
++ PostgreSQL for the database
++ error handling
+
+API:
++ RESTful API for the communications between client and server
+
+Security:
++ admin-only routes authentication and authorization
++ data validation
++ security headers middleware
++ rate limiting ?
+
+Testing:
++ Unit testing with Jest
++ End-to-end testing to oversee the complete workflow, Cypress
++ Simulating erronous customer behaviour to see if error handling works
++ Apache JMeter for load testing
++ security tests with ZAP
+
+(Scaling: caching with Redis, load balancer for traffic, alerts for performance degregation)
 
 
+# Project Management and User Testing
 
-#Project Management and User Testing
+The goal of this project is to build a website for booking Farmhouse experiences. It is for a small business owner who is broadening his businesses with this feature. There need to be a booking system he can handle. The project is set to be completed in 7 weeks, of which 5 is remaining now that this planning phase is completed. In total the project is done in four (4) phases. This is a one person sole project, so I am the one responsible of all tasks.
+
+## Phase 1: Definition and Planning
++ user personas and cases
++ UI/UX desing prototype
++ information architecture and tech stack set
+
+## Phase 2: Core Features
++ Database
++ Frontend
++ Backend
+
+## Phase 3: Advanced Features
++ role based features
++ other fine tuning
+
+## Phase 4: User Testing, Final Touches, Launch
++ User testing
++ fixes based on the user testing
++ deploy
++ presentation
+
+
+## User Testing
+
+1. Objective
+The goal of this user testing is to evaluate:
+
++ Usability of the booking system for both end-users and admin users.
++ Accessibility and responsiveness of the website.
++ Effectiveness of error handling and feedback mechanisms.
++ Overall user experience (UI/UX).
+
+2. Scope
+The testing will focus on:
+
++ Booking functionality (end-user perspective).
++ Admin functionalities (adding resources, viewing booked resources).
++ Navigation and content comprehension (website layout and features).
+
+3. Testing Methodology
+
++ Task-based Testing: Users will perform specific tasks (e.g., booking a resource, adding availability).
++ Think-Aloud Protocol: Users verbalize their thoughts while completing tasks, providing insight into usability.
++ A/B Testing (Optional): Compare different versions of a feature (e.g., layouts or button placements) if needed.
+
+Roles:
+
+Tester: Users representing end-users and admin users.
+
+Observer: Document user actions, issues, and feedback.
+
+4. Scenarios
+
+Scenario 1: Browsing the Website
+
+Task: Navigate to the "Services" section and find detailed information about a service.
+
+Success Criteria: User easily finds the information they need.
+
+
+Scenario 2: Booking a Resource (End-User)
+
+Task: Select a date, fill in contact details, and successfully book a resource.
+
+Success Criteria: Booking confirmation is received without errors.
+
+
+Scenario 3: Adding Availability (Admin)
+
+Task: Add a new available date and verify its appearance in the "Booking" section.
+
+Success Criteria: Date is published accurately.
+
+
+Scenario 4: Error Handling
+
+Task: Attempt to book an already booked resource.
+
+Success Criteria: The user receives a clear error message.
