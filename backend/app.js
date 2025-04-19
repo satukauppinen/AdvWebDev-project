@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const bookingRoutes = require('./routes/bookingRoutes');
 
 const app = express();
 
-require('dotenv').config();
+dotenv.config();
 
 
 app.use(cors());

@@ -7,4 +7,4 @@ export default function ServiceDetails({ service, onBook }) {
       </div>
     );
   }
-    // It displays the title and description of the service.  
+  

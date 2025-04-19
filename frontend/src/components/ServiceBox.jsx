@@ -1,3 +1,4 @@
+import './ServiceBox.scss';
 export default function ServiceBox({ service, onBook }) {
     return (
       <div className="service-box">
@@ -6,4 +7,4 @@ export default function ServiceBox({ service, onBook }) {
       </div>
     );
   }
-    // This component represents a service box on the homepage.  
+  

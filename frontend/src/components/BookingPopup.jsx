@@ -57,10 +57,3 @@ export default function BookingPopup({ service, onClose }) {
     </div>
   );
 }
-// This component represents a booking popup.
-// It takes a service and an onClose function as props.
-// It uses the useState hook to manage form data.
-// It defines a list of available times for booking.
-// It renders a form with inputs for name, email, phone, and time selection.
-// It handles form submission and calls the createBooking function from the API.
-// It uses async/await syntax to handle asynchronous operations.

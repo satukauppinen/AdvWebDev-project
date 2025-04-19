@@ -17,7 +17,7 @@ async function handleBooking(req, res) {
 
 async function sendEmailToEntrepreneur(booking) {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.your-email-provider.com',
+    host: 'smtp.gmail.com',
     port: 587,
     secure: false,
     auth: {
