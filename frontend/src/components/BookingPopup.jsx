@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createBooking } from '../api/bookingApi';
+import './BookingPopup.scss'
 
 export default function BookingPopup({ service, onClose }) {
   const [formData, setFormData] = useState({

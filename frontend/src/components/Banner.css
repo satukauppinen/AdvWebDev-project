@@ -1,0 +1,19 @@
+.banner {
+    padding: 4rem 2rem;
+    background-color: #B4C4BC; /* Optional: fallback color */
+    text-align: center;
+    position: relative;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .logo img {
+    max-width: 100%; /* Ensures responsiveness */
+    height: auto; /* Keeps the aspect ratio */
+  }
+  

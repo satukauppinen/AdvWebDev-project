@@ -1,13 +1,15 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     line-height: 1.6;
-    background-color: #fffefb;
+    background-color: #B4C4BC;
     color: #333;
-    display: flex; /* Makes the body a flex container */
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    min-height: 100vh; /* Ensures content is vertically centered */
-    margin: 0; /* Removes default margin */
+    margin: 0;
+  
+  }
+
+  section {
+    padding: 4rem 0; /* Adds spacing around all sections */
+  /* Prevents sections from being too tall */
   }
   
   .container {
@@ -17,9 +19,7 @@ body {
     /* You can add additional styles if needed */
   }
   
-  .services {
-    padding: 2rem;
-  }
+  
   
   .service-grid {
     display: flex;
@@ -28,35 +28,14 @@ body {
     justify-content: center; /* Centers service boxes horizontally */
   }
   
-  .service-box, .service-detail {
+  .service-box {
     background: #f8f8f8;
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
-    
   }
   
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Ensure the popup is on top */
-    display: flex; /* Center the popup */
-    justify-content: center;
-    align-items: center;
-  }
   
-  .popup-inner {
-    background: white;
-    padding: 2rem;
-    max-width: 50%;
-    max-height: 50%;
-    border-radius: 8px;
-    text-align: center;
-  }
   
   * {
     box-sizing: border-box;
@@ -65,28 +44,21 @@ body {
     
   }
   
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    background-color: #fffefb;
-    color: #333;
-  }
+ 
   
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    
-  }
-  
-  section {
-    padding: 4rem 0;
-  }
   
   img {
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  .contact-section {
+    background-color: #f5f5f5; /* Light contrast background */
+    padding: 4rem 2rem; /* Spacing to ensure visibility */
+    text-align: center; /* Center-align content */
+    border-top: 2px solid #ddd; /* Visual separator */
+    clear: both; /* Prevent overlapping */
   }
   
   /* Responsive text sizes */

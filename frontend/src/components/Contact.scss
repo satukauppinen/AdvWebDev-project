@@ -1,0 +1,46 @@
+.contact-section {
+    background-color: #f5f5f5; /* Light contrast background */
+    padding: 4rem 2rem; /* Ensure adequate spacing */
+    text-align: center; /* Center-align content */
+    border-top: 2px solid #ddd; /* Optional: Visual separator */
+    clear: both; /* Prevent overlap with previous sections */
+  }
+  
+  .contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem; /* Space between heading and paragraph */
+    color: #333; /* Dark color for contrast */
+  }
+  
+  .contact-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555; /* Slightly lighter color for readability */
+    max-width: 700px; /* Restrict width to improve readability */
+    margin: 0 auto; /* Center-align text */
+  }
+  
+  .contact-section a {
+    text-decoration: none; /* Remove underline for links */
+    color: #007BFF; /* Blue link color */
+  }
+  
+  .contact-section a:hover {
+    color: #0056b3; /* Darker color for hover effect */
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .contact-section {
+      padding: 2rem 1rem; /* Adjust spacing for smaller screens */
+    }
+  
+    .contact-section h2 {
+      font-size: 1.5rem; /* Smaller font size */
+    }
+  
+    .contact-section p {
+      font-size: 1rem; /* Adjust text size for readability */
+    }
+  }
+  

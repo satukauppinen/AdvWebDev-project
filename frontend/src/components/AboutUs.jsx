@@ -1,10 +1,13 @@
 import React from 'react';
+import farmImage from '../assets/farm.jpg'; // Path to your background image
 import './AboutUs.css'; // Optional: style as you like
 
 const AboutUs = () => {
   return (
-    <section id="about-us" className="about-section">
-      <div className="container">
+    <section id="about-us" className="about-section" style={{ backgroundImage: `url(${farmImage})` }}>
+      
+      
+      <div className="content-box">
         <h2>About Us</h2>
         <p>
           Welcome to Green Meadow Farm! Nestled in the countryside, we offer a unique experience
