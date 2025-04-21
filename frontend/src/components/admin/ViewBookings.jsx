@@ -1,25 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { fetchBookings } from "../../api/bookingApi";
 
 const ViewBookings = ({ token }) => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const response = await fetch('/api/bookings', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setBookings(data);
-        } else {
-          alert('Failed to fetch bookings');
-        }
-      } catch (error) {
-        console.error('Error fetching bookings:', error);
+      if (token) {
+          fetchBookings().then(setBookings);
       }
-    };
-    fetchBookings();
   }, [token]);
 
   return (

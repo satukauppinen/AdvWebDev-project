@@ -3,21 +3,25 @@ const jwt = require('jsonwebtoken');
 const pool = require('../db/db'); // PostgreSQL connection
 
 exports.loginAdmin = async (req, res) => {
-  const { username, password } = req.body; // Extract data from the request body
+  const { username, password } = req.body;
+
+  // Validate request body
+  if (!username || !password) {
+    return res.status(400).json({ message: 'Username and password are required' });
+  }
+
   try {
     // Check if admin exists
     const result = await pool.query('SELECT * FROM admins WHERE username = $1', [username]);
     const user = result.rows[0];
 
     if (!user) {
-      // Respond with 401 status code for unauthorized access
       return res.status(401).json({ message: 'Invalid login credentials' });
     }
 
     // Validate the password
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
-      // Respond with 401 status code for unauthorized access
       return res.status(401).json({ message: 'Invalid login credentials' });
     }
 
@@ -28,12 +32,10 @@ exports.loginAdmin = async (req, res) => {
       { expiresIn: '2h' } // Token expiration
     );
 
-    // Respond with 200 status code for successful login and send token
+    // Respond with token
     res.status(200).json({ token });
   } catch (err) {
-    console.error('Error during login:', err);
-    // Respond with 500 status code for server error
+    console.error('Error during login:', err.message, err.stack);
     res.status(500).json({ message: 'Server error' });
   }
 };
-

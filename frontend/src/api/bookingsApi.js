@@ -1,7 +1,16 @@
-import axios from 'axios';
+//import axios from 'axios';
+import { API_URL } from "./config";
 
-const API_URL = 'http://localhost:5000/api';
+export const fetchBookings = async () => {
+    const response = await fetch(`${API_URL}/bookings`);
+    return response.json();
+};
 
-export const createBooking = (data) => {
-  return axios.post(`${API_URL}/bookings`, data);
+export const createBooking = async (bookingData) => {
+  const response = await fetch(`${API_URL}/bookings`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingData),
+  });
+  return response.json();
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 
 const SetAvailability = ({ token }) => {
   const [availableTimes, setAvailableTimes] = useState([]);
@@ -7,7 +7,7 @@ const SetAvailability = ({ token }) => {
 
   const saveTimes = async () => {
     try {
-      await fetch('/api/available-times', {
+      await fetch('/api/availability', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

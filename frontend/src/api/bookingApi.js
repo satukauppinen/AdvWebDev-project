@@ -1,4 +1,4 @@
-import API_URL from './config';
+import {API_URL }from './config';
 
 export async function createBooking(data) {
   const res = await fetch(`${API_URL}/api/bookings`, {
@@ -14,7 +14,7 @@ export async function createBooking(data) {
   return await res.json();
 }
 
-export async function getBookings(token) {
+export async function fetchBookings(token) {
   const res = await fetch(`${API_URL}/api/bookings`, {
     headers: {
       Authorization: `Bearer ${token}`,

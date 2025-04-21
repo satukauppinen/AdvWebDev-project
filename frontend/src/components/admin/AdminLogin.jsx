@@ -1,36 +1,45 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { loginAdmin } from '../../api/authApi'; // Adjust the import path as necessary
 
 
-const AdminLogin = ({ onLogin }) => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+const AdminLogin = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const { token } = await loginAdmin(credentials.username, credentials.password);
-      onLogin(token);
-    } catch (err) {
-      alert('Invalid login!');
-    }
-  };
+    const handleLogin = async () => {
+        try {
+            const response = await loginAdmin(username, password);
+            console.log("Login successful:", response);
+            // Handle successful login (e.g., save token, redirect)
+            navigate("/admin/dashboard");
+            
+        } catch (err) {
+            console.error(err.message);
+            setError("Login failed. Please check your credentials.");
+        }
+    };
 
-  return (
-    <div>
-      <h2>Admin Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-      />
-      <button onClick={handleLogin}>Login</button>
-    </div>
-  );
+    return (
+        <div>
+            <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleLogin}>Login</button>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+        </div>
+    );
 };
 
 export default AdminLogin;
-// This component handles the admin login functionality.
