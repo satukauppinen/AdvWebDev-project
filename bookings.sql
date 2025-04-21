@@ -6,3 +6,16 @@ CREATE TABLE bookings (
     service TEXT NOT NULL,
     time TIMESTAMP NOT NULL
 );
+-- Admins for login
+CREATE TABLE admins (
+    id SERIAL PRIMARY KEY,
+    username TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL
+);
+
+-- Availability for each service
+CREATE TABLE availability (
+    id SERIAL PRIMARY KEY,
+    service TEXT NOT NULL,
+    time TIMESTAMP UNIQUE NOT NULL
+);

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createBooking } from '../api/bookingApi';
+import { createBooking } from '../api/bookingsApi';
 import './BookingPopup.scss'
 
 export default function BookingPopup({ service, onClose }) {
