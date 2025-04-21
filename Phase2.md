@@ -1,29 +1,29 @@
 # Project phase 2 - Basic structure and main functionalities
-Add something
+The website still needs some fine tuning, but it is almost there
 
-1. Environment
-Add something
+## Environment
+Currently running on local virtual machine. My intention is to get it deployed on cloud, but at this phase I simply ran out of time.
 
-2. Backend
+## Backend
 Backend done with Node.js and Express.
 
-3. Frontend
+## Frontend
 React (Vite)
 
-4. Database
-Add something
+## Database
+PostgreSQL with Docker
 
-5. Basic structure and architecture
-Add something
+## Basic structure and architecture
+The structure and architecture is what I intended it to be in the planning.
 
-6. Functionalities
-Add something
+## Functionalities
+The website tells about the services a company offers and the services can be booked on the site. There is an admin route as well, where the admin can set new times and view the booked ones. Some minor issues with some api routes still need some attention. Again, I ran out of time.
 
-7. Code quality and documentation
-Add something
+## Code quality and documentation
+Code quality could be better, but I hope that it's not completely terrible. AI used as an assistant.
 
-8. Testing and error handling
-Add something
+## Testing and error handling
+Error handling added to code in many places and seem to be working. Middleware is set. I have done user testing as a customer and as an admin. 
 
-9. User interface and interaction
-Add something
+## User interface and interaction
+The user interface is fine. Small adjustments needs to be done on the layout maybe. The admin side I am leaving very basic, at least right now. It just has the functionalities. 
