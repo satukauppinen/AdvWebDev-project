@@ -18,6 +18,10 @@ export default function BookingPopup({ service, onClose }) {
   ];
 
   const handleSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.phone || !formData.time) {
+      alert('Please fill in all fields!');
+      return;
+    }
     try {
       await createBooking({ ...formData, service: service.title });
       alert('Booking successful!');

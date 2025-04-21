@@ -1,18 +1,20 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const bookingRoutes = require('./routes/bookingRoutes');
-const adminRoutes = require('./routes/admin');
+const bookingRoutes = require('../backend/routes/bookingRoutes');
+const adminRoutes = require('../backend/routes/admin');
 
 const app = express();
 
 dotenv.config();
 
 
-app.use(cors());
+
+app.use(cors({ origin: 'http://localhost:5173' }));
+
 app.use(express.json());
 
-app.use('/api', bookingRoutes);
+app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
 
 const PORT = 5000;

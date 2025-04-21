@@ -1,8 +1,8 @@
 const express = require('express');
-const { handleBooking } = require('../controllers/bookingsController');
+const { createBooking } = require('../controllers/bookingsController');
 const router = express.Router();
 
-router.post('/bookings', handleBooking);
+router.post('/bookings', createBooking);
 
 module.exports = router;
 // This code defines a route for handling booking requests.

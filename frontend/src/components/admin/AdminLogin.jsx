@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { loginAdmin } from '../../api/authApi'; // Adjust the import path as necessary
 
 
 const AdminLogin = ({ onLogin }) => {
@@ -6,19 +7,10 @@ const AdminLogin = ({ onLogin }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-      });
-      if (response.ok) {
-        const { token } = await response.json();
-        onLogin(token);
-      } else {
-        alert('Invalid login!');
-      }
-    } catch (error) {
-      console.error('Error logging in:', error);
+      const { token } = await loginAdmin(credentials.username, credentials.password);
+      onLogin(token);
+    } catch (err) {
+      alert('Invalid login!');
     }
   };
 

@@ -1,0 +1,31 @@
+
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    container_name: farmhouse_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Pakkopaita666!
+      POSTGRES_DB: farmhouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./backend/bookings.sql:/docker-entrypoint-initdb.d/bookings.sql
+
+  backend:
+    build: ./backend
+    container_name: farmhouse_backend
+    restart: always
+    environment:
+      DATABASE_URL: postgres://postgres:Pakkopaita666!@db:5432/farmhouse
+      JWT_SECRET: your_jwt_secret
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+
+volumes:
+  db_data:
