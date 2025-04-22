@@ -1,3 +1,4 @@
+// This is the website and what is displayed to the user.
 import AboutUs from '../components/AboutUs';
 import ServiceBox from '../components/ServiceBox';
 import ServiceDetails from '../components/ServiceDetails';

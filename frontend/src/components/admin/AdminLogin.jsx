@@ -1,3 +1,4 @@
+//Handles the admin login functionality
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { loginAdmin } from '../../api/authApi'; // Adjust the import path as necessary

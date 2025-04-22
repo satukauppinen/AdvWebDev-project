@@ -1,3 +1,4 @@
+// NAvigation on the top of the page. Floats on the top of the page.
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';

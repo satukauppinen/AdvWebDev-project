@@ -1,5 +1,6 @@
 // backend/routes/admin.js
-
+//This file is responsible for handling the routes related to the admin functionality of the application.
+// It uses the express library to create a router and define the routes.
 const express = require('express');
 const router = express.Router();
 const { loginAdmin} = require('../controllers/adminController');

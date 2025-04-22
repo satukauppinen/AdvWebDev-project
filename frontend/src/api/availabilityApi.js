@@ -1,3 +1,4 @@
+//API calls for availability management
 import {API_URL} from './config';
 
 export async function getAvailability() {

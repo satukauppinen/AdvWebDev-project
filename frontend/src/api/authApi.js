@@ -1,4 +1,5 @@
 // src/api/authApi.js
+//API calls for authentication, specifically for admin login
 import { API_URL } from "./config";
 export const loginAdmin = async (username, password) => {
 

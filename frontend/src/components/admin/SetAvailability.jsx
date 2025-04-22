@@ -1,3 +1,4 @@
+//handles the admin's ability to set available times for booking
 import React, { useState} from 'react';
 
 const SetAvailability = ({ token }) => {

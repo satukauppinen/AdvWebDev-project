@@ -1,3 +1,4 @@
+// The booking popup and dropdown menu for selecting the time and date of the booking.
 import { useState } from 'react';
 import { createBooking } from '../api/bookingsApi';
 import './BookingPopup.scss'

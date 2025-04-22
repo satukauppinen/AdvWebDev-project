@@ -1,4 +1,5 @@
 //import axios from 'axios';
+//API calls for booking management for the admin
 import { API_URL } from "./config";
 
 export const fetchBookings = async () => {

@@ -1,5 +1,6 @@
+//Contact info file
 import React from 'react';
-import './Contact.scss'; // Optional: style as you like
+import './Contact.scss'; 
 
 const Contact = () => {
   return (

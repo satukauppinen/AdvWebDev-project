@@ -1,3 +1,4 @@
+//Admin dashboard functionality
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SetAvailability from './SetAvailability';

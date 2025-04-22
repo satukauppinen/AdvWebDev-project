@@ -1,4 +1,5 @@
 // backend/middleware/authMiddleware.js
+//This file is responsible for handling the authentication of the admin.
 
 const jwt = require('jsonwebtoken');
 

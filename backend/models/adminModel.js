@@ -1,5 +1,5 @@
 // backend/models/adminModel.js
-
+// This file is responsible for handling the admin functionality of the application.
 const db = require('../db/db');
 
 async function getAdminByUsername(username) {

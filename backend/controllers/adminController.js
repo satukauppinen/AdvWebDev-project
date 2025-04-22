@@ -1,11 +1,11 @@
+//This file is responsible for handling the login functionality of the admin.
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const pool = require('../db/db'); // PostgreSQL connection
-
+const pool = require('../db/db'); 
 exports.loginAdmin = async (req, res) => {
   const { username, password } = req.body;
 
-  // Validate request body
+  // Validating request body
   if (!username || !password) {
     return res.status(400).json({ message: 'Username and password are required' });
   }
@@ -19,7 +19,7 @@ exports.loginAdmin = async (req, res) => {
       return res.status(401).json({ message: 'Invalid login credentials' });
     }
 
-    // Validate the password
+    // Validating the password
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match) {
       return res.status(401).json({ message: 'Invalid login credentials' });

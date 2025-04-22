@@ -1,3 +1,4 @@
+// The more detailed info for each service, including the image and description, is displayed in a separate component.
 import './ServiceDetails.css';
 
 export default function ServiceDetails({ service, onBook }) {

@@ -1,3 +1,4 @@
+//This file is for handling the booking logic of the application.
 const pool = require('../db/db');
 
 async function createBooking({ name, email, phone, service, time }) {
@@ -9,9 +10,3 @@ async function createBooking({ name, email, phone, service, time }) {
 }
 
 module.exports = { createBooking };
-// This function creates a new booking in the database.
-// It takes an object with the booking details as an argument.
-// It uses the pool.query method to execute an SQL INSERT statement.
-// The function returns the newly created booking object.
-// The pool.query method is used to interact with the PostgreSQL database.
-// The SQL statement is parameterized to prevent SQL injection attacks.

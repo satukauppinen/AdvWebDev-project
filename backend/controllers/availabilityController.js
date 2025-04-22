@@ -1,5 +1,5 @@
 // backend/controllers/availabilityController.js
-
+//This file is responsible for handling the availability functionality of the admin.
 const db = require('../db/db');
 
 const addAvailability = async (req, res) => {

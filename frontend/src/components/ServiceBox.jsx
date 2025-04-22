@@ -1,3 +1,4 @@
+//Small "preview" boxes for each service
 import './ServiceBox.scss';
 
 export default function ServiceBox({ service, onBook }) {

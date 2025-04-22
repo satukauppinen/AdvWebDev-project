@@ -1,3 +1,4 @@
+//Handles the admin's booking viewing functionality
 import React, { useEffect, useState } from 'react';
 import { fetchBookings } from "../../api/bookingApi";
 

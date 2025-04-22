@@ -1,4 +1,6 @@
 // backend/tools/hash.js
+// This script hashes a plain password using bcrypt.
+// It is used to generate a hashed password for the admin user.
 const bcrypt = require('bcrypt');
 
 const hashPassword = async () => {

@@ -1,3 +1,4 @@
+//This file handles the booking logic for the application.
 const { createBooking } = require('../models/bookingModel');
 
 async function handleBooking(req, res) {
