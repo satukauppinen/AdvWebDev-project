@@ -4,20 +4,20 @@ body {
     background-color: #B4C4BC;
     color: #333;
     margin: 0;
-    padding: 0;
+    
   
   }
 
   section {
-    padding: 4rem 0; /* Adds spacing around all sections */
-  /* Prevents sections from being too tall */
+    padding: 4rem 0; 
   }
   
   .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    /* You can add additional styles if needed */
+    
+    
   }
   
   
@@ -26,7 +26,7 @@ body {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    justify-content: center; /* Centers service boxes horizontally */
+    justify-content: center; 
   }
   
   .service-box {
@@ -55,11 +55,11 @@ body {
   }
 
   .contact-section {
-    background-color: #f5f5f5; /* Light contrast background */
-    padding: 4rem 2rem; /* Spacing to ensure visibility */
-    text-align: center; /* Center-align content */
-    border-top: 2px solid #ddd; /* Visual separator */
-    clear: both; /* Prevent overlapping */
+    background-color: #f5f5f5; 
+    padding: 4rem 2rem; 
+    text-align: center; 
+    border-top: 2px solid #ddd; 
+    clear: both; 
   }
   
   /* Responsive text sizes */

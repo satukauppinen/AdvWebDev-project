@@ -72,13 +72,7 @@
       margin-top: 1rem; /* Add spacing above */
     }
 
-    .contact-section {
-        background-color: #f5f5f5; /* Light contrast background */
-        padding: 4rem 2rem; /* Spacing to ensure visibility */
-        text-align: center; /* Center-align content */
-        border-top: 2px solid #ddd; /* Visual separator */
-        clear: both; /* Prevent overlapping */
-      }
+    
   
     
   }
