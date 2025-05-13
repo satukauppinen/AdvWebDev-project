@@ -1,5 +1,5 @@
 //This is the admin page component that handles the admin login and dashboard.
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminLogin from '../components/admin/AdminLogin';
 import AdminDashboard from '../components/admin/AdminDashboard';
 import Navbar from '../components/Navbar';

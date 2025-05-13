@@ -1,9 +1,13 @@
-//This file is responsible for handling the login functionality of the admin.
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('../db/db'); 
 exports.loginAdmin = async (req, res) => {
-  const { username, password } = req.body;
+  const username = req.body.username.trim();
+  const password = req.body.password.trim();
+
+  
+
+  
 
   // Validating request body
   if (!username || !password) {
@@ -12,22 +16,26 @@ exports.loginAdmin = async (req, res) => {
 
   try {
     // Check if admin exists
+    //console.log("Database query result:", result.rows);
+
     const result = await pool.query('SELECT * FROM admins WHERE username = $1', [username]);
-    const user = result.rows[0];
+    const admin = result.rows.length > 0 ? result.rows[0] : null;
 
-    if (!user) {
+    //const match = await bcrypt.compare(password, admin.password);
+    //console.log("Password comparison result:", match);
+
+    if (!admin) {
+      console.error("Login failed: Admin not found", username);
       return res.status(401).json({ message: 'Invalid login credentials' });
     }
 
-    // Validating the password
-    const match = await bcrypt.compare(password, user.password_hash);
-    if (!match) {
-      return res.status(401).json({ message: 'Invalid login credentials' });
-    }
+    console.log("Received password:", password);
+    console.log("Stored hash from database:", password);
+
 
     // Generate JWT token for authenticated admin
     const token = jwt.sign(
-      { id: user.id, username: user.username }, // Payload
+      { id: id, username: username }, // Payload
       process.env.JWT_SECRET, // Secret key
       { expiresIn: '2h' } // Token expiration
     );

@@ -10,7 +10,8 @@ CREATE TABLE bookings (
 CREATE TABLE admins (
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL
+    password TEXT NOT NULL,
+    
 );
 
 -- Availability for each service

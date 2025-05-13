@@ -4,9 +4,13 @@ body {
     background-color: #B4C4BC;
     color: #333;
     margin: 0;
+
+  
     
   
   }
+
+  
 
   section {
     padding: 4rem 0; 
@@ -60,6 +64,8 @@ body {
     text-align: center; 
     border-top: 2px solid #ddd; 
     clear: both; 
+    width: 100%; /* Ensures it spans full width */
+  margin-top: 50px;
   }
   
   /* Responsive text sizes */

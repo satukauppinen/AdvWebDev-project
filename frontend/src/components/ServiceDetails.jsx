@@ -3,7 +3,7 @@ import './ServiceDetails.css';
 
 export default function ServiceDetails({ service, onBook }) {
   return (
-    <div className="service-details-container">
+    <div id={`service-${service.id}`} className="service-details-container">
       <div className="service-details" style={{ backgroundImage: `url(${service.image})` }}>
         <div className="details-box">
           <h2>{service.title}</h2>

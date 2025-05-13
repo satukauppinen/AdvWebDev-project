@@ -12,14 +12,17 @@ const app = express();
 
 dotenv.config();
 
-// Security headers using Helmet
+// ✅ Middleware to parse JSON request bodies (must be before routes)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ✅ Security headers using Helmet
 app.use(helmet());
 
 // Add specific headers for CSP, anti-clickjacking, etc.
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
-
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'", "https://trusted-cdn.com"],
             styleSrc: ["'self'", "https://trusted-cdn.com"],
@@ -31,29 +34,32 @@ app.use(
 app.use(helmet.frameguard({ action: 'deny' })); // Anti-clickjacking
 app.use(helmet.noSniff());
 
-// CORS configuration
+// ✅ CORS configuration
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-    credentials: true, // Allow cookies or authentication tokens
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    credentials: true,
 }));
 
-// Middleware to parse JSON request bodies
-app.use(express.json());
+// ✅ Debugging Middleware to Confirm `req.body`
+app.use((req, res, next) => {
+    console.log(`Incoming ${req.method} request to ${req.url}`);
+    console.log("Request Body:", req.body);
+    next();
+});
 
-// Routes
+// ✅ Routes (Ensure `/api/admin` is correctly registered)
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
 
-// Error-handling middleware
+// ✅ Error-handling middleware
 app.use((err, req, res, next) => {
     console.error("Internal Error:", err.message);
     res.status(500).json({ success: false, error: err.message });
 });
 
-// Start Server
+// ✅ Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
-// Export the app for testing or further integrations
+// ✅ Export for testing or further integrations
 module.exports = app;
-

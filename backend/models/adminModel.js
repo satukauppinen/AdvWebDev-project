@@ -1,13 +1,19 @@
-// backend/models/adminModel.js
-// This file is responsible for handling the admin functionality of the application.
-const db = require('../db/db');
+// backend/middleware/authMiddleware.js
+//This file is responsible for handling the authentication of the admin.
 
-async function getAdminByUsername(username) {
-  const result = await db.query(
-    'SELECT * FROM admins WHERE username = $1',
-    [username]
-  );
-  return result.rows[0];
-}
+const jwt = require('jsonwebtoken');
 
-module.exports = { getAdminByUsername };
+const verifyToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader?.split(' ')[1];
+
+  if (!token) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, admin) => {
+    if (err) return res.sendStatus(403);
+    req.admin = admin;
+    next();
+  });
+};
+
+module.exports = verifyToken;

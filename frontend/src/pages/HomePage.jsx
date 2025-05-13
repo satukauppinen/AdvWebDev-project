@@ -33,7 +33,8 @@ export default function HomePage() {
       <Navbar />
       <Banner />
       <AboutUs />
-      <section className="services">
+      <Contact />
+      <section id="services">
         <div className="service-grid">
           {services.map(service => (
             <ServiceBox key={service.id} service={service} onBook={() => setSelectedService(service)} />
@@ -44,9 +45,10 @@ export default function HomePage() {
             <ServiceDetails key={service.id} service={service} onBook={() => setSelectedService(service)} />
           ))}
         </div>
+        {selectedService && <BookingPopup service={selectedService} onClose={() => setSelectedService(null)} />}
       </section>
-      {selectedService && <BookingPopup service={selectedService} onClose={() => setSelectedService(null)} />}
-      <Contact />
+      
+      
     </div>
   );
 }

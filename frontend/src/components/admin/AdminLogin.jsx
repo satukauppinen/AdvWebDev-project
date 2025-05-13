@@ -11,17 +11,19 @@ const AdminLogin = () => {
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        try {
-            const response = await loginAdmin(username, password);
-            console.log("Login successful:", response);
-            // Handle successful login (e.g., save token, redirect)
-            navigate("/admin/dashboard");
-            
-        } catch (err) {
-            console.error(err.message);
-            setError("Login failed. Please check your credentials.");
-        }
-    };
+    try {
+        console.log("Username being sent:", username); // Log username before API call
+        const response = await loginAdmin(username, password);
+        console.log("Login Response:", response); 
+        
+        navigate("/admin/dashboard");
+    } catch (err) {
+        console.error("Error:", err.message);
+        setError("Login failed. Please check your credentials.");
+    }
+};
+
+
 
     return (
         <div>

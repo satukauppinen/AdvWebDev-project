@@ -10,6 +10,7 @@ const verifyToken = require('../middleware/authMiddleware');
 
 // Public login
 router.post('/login', loginAdmin);
+    
 
 // Protected routes
 router.get('/availability', verifyToken, availabilityController.getAvailability);

@@ -38,3 +38,4 @@ export const createBooking = async (bookingData) => {
     throw error;
   }
 };
+

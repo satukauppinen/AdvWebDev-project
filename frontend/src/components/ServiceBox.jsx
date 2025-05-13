@@ -5,8 +5,13 @@ export default function ServiceBox({ service, onBook }) {
     return (
       <div className="service-box">
         <img src={service.image} alt={service.title} className="service-image"/>
-        <h3>{service.title}</h3>
-        <button onClick={onBook}>Book</button>
+        
+        {/* ✅ Make the title clickable */}
+        <h3>
+          <a href={`#service-${service.id}`} className="service-title">
+            {service.title}
+          </a>
+        </h3>
       </div>
     );
   }
