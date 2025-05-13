@@ -7,7 +7,7 @@ services:
     container_name: farmhouse_db
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: salasanatähän
+      POSTGRES_PASSWORD: Pakkopaita
       POSTGRES_DB: farmhouse
     ports:
       - "5432:5432"
@@ -20,12 +20,13 @@ services:
     container_name: farmhouse_backend
     restart: always
     environment:
-      DATABASE_URL: postgres://postgres:salasanatähän!@db:5432/farmhouse
-      JWT_SECRET: your_jwt_secret (ei ole tämä)
-    depends_on:
-      - db
+      DATABASE_URL: postgres://postgres:Pakkopaita@localhost:5432/farmhouse
+      JWT_SECRET: jwtsalasana
+    
     ports:
       - "5000:5000"
+    env_file:
+      - ./backend/.env
 
 volumes:
   db_data:

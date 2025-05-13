@@ -2,7 +2,7 @@
 import {API_URL }from './config';
 
 export async function createBooking(data) {
-  const res = await fetch(`${API_URL}/api/bookings`, {
+  const res = await fetch(`/api/bookings`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -16,7 +16,7 @@ export async function createBooking(data) {
 }
 
 export async function fetchBookings(token) {
-  const res = await fetch(`${API_URL}/api/bookings`, {
+  const res = await fetch(`/api/bookings`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -27,4 +27,4 @@ export async function fetchBookings(token) {
   }
 
   return await res.json();
-}
+};
