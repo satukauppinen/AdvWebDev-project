@@ -18,13 +18,18 @@ export async function createBooking(data) {
 export async function fetchBookings(token) {
   const res = await fetch(`/api/bookings`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: token ? `Bearer ${token}` : "",  // ✅ Ensure token is included
+      "Content-Type": "application/json",
     },
   });
 
+  console.log("API Response Status:", res.status); // ✅ Debugging log
+  const data = await res.json();
+  console.log("API Response Data:", data);
+
   if (!res.ok) {
-    throw new Error('Failed to fetch bookings');
+    throw new Error(`Failed to fetch bookings: ${res.status}`);
   }
 
-  return await res.json();
+  return data;
 };

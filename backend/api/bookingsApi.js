@@ -18,6 +18,8 @@ export const fetchBookings = async () => {
 };
 
 export const createBooking = async (bookingData) => {
+  console.log("Booking Data Being Sent:", bookingData); // ✅ Debugging log
+
   try {
     const response = await fetch("/api/bookings", {
       method: "POST",
@@ -38,4 +40,5 @@ export const createBooking = async (bookingData) => {
     throw error;
   }
 };
+
 

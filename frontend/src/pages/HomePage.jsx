@@ -30,16 +30,22 @@ export default function HomePage() {
 
   // ✅ Fetch availability data from the backend API
   useEffect(() => {
-    fetch("/api/availability")
-      .then(res => res.json())
-      .then(data => setAvailability(data))
-      .catch(error => console.error("Error fetching availability:", error));
-  }, []);
+  fetch("/api/bookings")
+    .then(res => res.json())
+    .then(data => {
+      console.log("Fetched bookings:", data); // ✅ Debugging log
+      setBookings(data);
+    })
+    .catch(error => console.error("Error fetching bookings:", error));
+}, []);
+
 
   // ✅ Only show available services
+  const [bookings, setBookings] = useState([]);
   const availableServices = services.filter(service =>
-    availability.some(avail => avail.service === service.title && avail.isAvailable)
-  );
+  !bookings.some(booking => booking.service === service.title)
+);
+
 
   return (
     <div>
@@ -49,20 +55,20 @@ export default function HomePage() {
       <Contact />
 
       <section id="services">
-        <div className="service-grid">
-          {availableServices.map(service => (
-            <ServiceBox key={service.id} service={service} />
-          ))}
-        </div>
+  <div className="service-grid">
+    {services.map(service => (  // ✅ Render all services, not filtered ones
+      <ServiceBox key={service.id} service={service} />
+    ))}
+  </div>
 
-        <div className="service-details">
-          {services.map(service => (
-            <ServiceDetails key={service.id} service={service} onBook={() => setSelectedService(service)} />
-          ))}
-        </div>
+  <div className="service-details">
+    {services.map(service => (
+      <ServiceDetails key={service.id} service={service} onBook={() => setSelectedService(service)} />
+    ))}
+  </div>
 
-        {selectedService && <BookingPopup service={selectedService} onClose={() => setSelectedService(null)} />}
-      </section>
+  {selectedService && <BookingPopup service={selectedService} onClose={() => setSelectedService(null)} />}
+</section>
     </div>
   );
 
