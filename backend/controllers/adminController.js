@@ -1,49 +1,72 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('../db/db'); 
+
+// ✅ Admin login function
 exports.loginAdmin = async (req, res) => {
   const username = req.body.username.trim();
   const password = req.body.password.trim();
 
-  
-
-  
-
-  // Validating request body
   if (!username || !password) {
     return res.status(400).json({ message: 'Username and password are required' });
   }
 
   try {
-    // Check if admin exists
-    //console.log("Database query result:", result.rows);
+    // ✅ Debugging: Log database query results
+    console.log("Checking for admin with username:", username);
 
-    const result = await pool.query('SELECT * FROM admins WHERE username = $1', [username]);
-    const admin = result.rows.length > 0 ? result.rows[0] : null;
+    const debugResult = await pool.query('SELECT username FROM public.admins');
+console.log("All stored usernames in database:", debugResult.rows);
 
-    //const match = await bcrypt.compare(password, admin.password);
-    //console.log("Password comparison result:", match);
 
-    if (!admin) {
+    const result = await pool.query('SELECT * FROM public.admins WHERE username = $1', [username]);
+    console.log("Stored usernames in database:", result.rows);
+    console.log("Connected to database:", process.env.DATABASE_URL);
+    
+
+
+
+    if (result.rows.length === 0) {
       console.error("Login failed: Admin not found", username);
       return res.status(401).json({ message: 'Invalid login credentials' });
     }
 
-    console.log("Received password:", password);
-    console.log("Stored hash from database:", password);
+    const admin = result.rows[0];
 
+    console.log("Stored password:", admin.password);
+    console.log("Entered password:", password);
+    console.log("Password comparison result:", await bcrypt.compare(password, admin.password));
 
-    // Generate JWT token for authenticated admin
+    // ✅ Check if password verification is working correctly
+    const match = await bcrypt.compare(password, admin.password);
+    console.log("Password comparison result:", match);
+
+    if (!match) {
+      console.error("Incorrect password for admin:", username);
+      return res.status(401).json({ message: 'Invalid login credentials' });
+    }
+
     const token = jwt.sign(
-      { id: id, username: username }, // Payload
-      process.env.JWT_SECRET, // Secret key
-      { expiresIn: '2h' } // Token expiration
+      { id: admin.id, username: admin.username },
+      process.env.JWT_SECRET,
+      { expiresIn: '2h' }
     );
 
-    // Respond with token
     res.status(200).json({ token });
   } catch (err) {
-    console.error('Error during login:', err.message, err.stack);
+    console.error('Error during login:', err);
     res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+// ✅ Correctly placed `getAdminData` function
+exports.getAdminData = async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, username, email, role FROM admins'); // ✅ Fetch admin data
+    res.json(result.rows); // ✅ Send JSON response
+  } catch (error) {
+    console.error("Error fetching admin data:", error.message);
+    res.status(500).json({ success: false, error: error.message }); // ✅ Handle errors properly
   }
 };

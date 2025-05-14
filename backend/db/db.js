@@ -1,8 +1,13 @@
 // Database connection file for the application
+
 require('dotenv').config();
-console.log("Loaded DB Password:", process.env.DB_PASSWORD); 
+
+console.log("Loaded DB Password:", process.env.DB_PASSWORD);
+console.log("Database Host:", process.env.DB_HOST);
+console.log("Database Name:", process.env.DB_NAME);
 
 const { Pool } = require('pg');
+
 
 
 // Create PostgreSQL connection pool

@@ -1,10 +1,9 @@
 //This file handles the booking logic for the application.
 const express = require('express');
-const {  handleBooking } = require('../controllers/bookingsController');
-
+const { getBookings } = require('../controllers/bookingController'); // ✅ Add controller function
 const router = express.Router();
 
-router.post("/", handleBooking);
-
+router.get('/', getBookings); // ✅ Define GET route for `/api/bookings`
 
 module.exports = router;
+

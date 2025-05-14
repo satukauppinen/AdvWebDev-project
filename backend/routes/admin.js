@@ -3,7 +3,7 @@
 // It uses the express library to create a router and define the routes.
 const express = require('express');
 const router = express.Router();
-const { loginAdmin} = require('../controllers/adminController');
+const { loginAdmin, getAdminData } = require('../controllers/adminController'); 
 const availabilityController = require('../controllers/availabilityController');
 const bookingController = require('../controllers/bookingController');
 const verifyToken = require('../middleware/authMiddleware');
@@ -11,6 +11,8 @@ const verifyToken = require('../middleware/authMiddleware');
 // Public login
 router.post('/login', loginAdmin);
     
+// ✅ Define GET route for `/api/admin`
+router.get('/', verifyToken, getAdminData); 
 
 // Protected routes
 router.get('/availability', verifyToken, availabilityController.getAvailability);
@@ -20,3 +22,4 @@ router.delete('/availability', verifyToken, availabilityController.removeAvailab
 router.get('/bookings', verifyToken, bookingController.getBookings);
 
 module.exports = router;
+

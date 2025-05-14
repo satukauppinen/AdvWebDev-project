@@ -1,6 +1,6 @@
 //Handles the admin's booking viewing functionality
 import React, { useEffect, useState } from 'react';
-import { fetchBookings } from "../../api/bookingApi";
+import { fetchBookings } from "../../../../backend/api/bookingApi";
 
 const ViewBookings = ({ token }) => {
   const [bookings, setBookings] = useState([]);

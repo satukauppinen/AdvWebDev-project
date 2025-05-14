@@ -5,8 +5,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 const path = require('path');
-const bookingRoutes = require('../backend/routes/bookingRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
 const adminRoutes = require('../backend/routes/admin');
+const availabilityRoutes = require('./routes/availabilityRoutes');
 
 const app = express();
 
@@ -50,12 +51,20 @@ app.use((req, res, next) => {
 // ✅ Routes (Ensure `/api/admin` is correctly registered)
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/availability', availabilityRoutes);
 
 // ✅ Error-handling middleware
 app.use((err, req, res, next) => {
     console.error("Internal Error:", err.message);
     res.status(500).json({ success: false, error: err.message });
 });
+
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
+
+
+
 
 // ✅ Start Server
 const PORT = process.env.PORT || 5000;
