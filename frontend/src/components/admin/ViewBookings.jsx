@@ -7,15 +7,26 @@ const ViewBookings = ({ token }) => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-  if (token) {
-    fetchBookings(token)
-      .then(data => {
-        console.log("Admin Dashboard - Fetched Bookings:", data); // ✅ Debugging log
-        setBookings(data);
-      })
-      .catch(error => console.error("Error fetching bookings:", error));
+  fetchBookings()
+    .then((data) => {
+      console.log("Fetched bookings:", data);
+      setBookings(data);
+    })
+    .catch((error) => console.error("Error fetching bookings:", error));
+}, []);
+
+const handleDelete = async (bookingId) => {
+  try {
+    await fetch(`/api/bookings/${bookingId}`, {
+      method: "DELETE",
+    });
+    setBookings(bookings.filter((booking) => booking.id !== bookingId)); // ✅ Update UI instantly
+  } catch (error) {
+    console.error("Error deleting booking:", error);
   }
-}, [token]);
+};
+
+
 
 
   return (
@@ -39,6 +50,9 @@ const ViewBookings = ({ token }) => {
               <td>{booking.email}</td>
               <td>{booking.phone}</td>
               <td>{booking.service}</td>
+              <td>
+        <button onClick={() => handleDelete(booking.id)}>❌</button> {/* ✅ Delete button */}
+      </td>
             </tr>
           ))}
         </tbody>

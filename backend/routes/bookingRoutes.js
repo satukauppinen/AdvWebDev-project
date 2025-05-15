@@ -1,10 +1,12 @@
 //This file handles the booking logic for the application.
-const express = require('express');
-const { getBookings, createBooking } = require('../controllers/bookingController'); // ✅ Import createBooking
+const express = require("express");
+const { getBookings, createBooking, deleteBooking } = require("../controllers/bookingController");
 const router = express.Router();
 
-router.get('/', getBookings);  // ✅ Keep existing GET route
-router.post('/', createBooking); // ✅ Add POST route for saving bookings
+router.get("/", getBookings);
+router.post("/", createBooking);
+
+router.delete("/:id", deleteBooking);
 
 router.get('/', async (req, res) => {
   try {

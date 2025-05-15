@@ -18,4 +18,25 @@ async function createBooking({ name, email, phone, service, time }) {
   }
 }
 
-module.exports = { createBooking };
+
+
+async function deleteBookingById(id) {
+  try {
+    console.log(`Deleting booking with ID: ${id}`);
+    const result = await pool.query("DELETE FROM bookings WHERE id = $1 RETURNING *", [id]);
+
+    if (result.rowCount === 0) {
+      console.warn(`No booking found with ID: ${id}`);
+      return null;
+    }
+
+    console.log("Booking successfully deleted:", result.rows[0]);
+    return result.rows[0]; // ✅ Returns deleted booking details
+  } catch (error) {
+    console.error("Database error during booking deletion:", error);
+    throw new Error("Failed to delete booking due to database error");
+  }
+}
+
+
+module.exports = { createBooking, deleteBookingById };

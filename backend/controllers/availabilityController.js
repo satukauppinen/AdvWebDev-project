@@ -31,4 +31,26 @@ const getAvailability = async (req, res) => {
   res.json(result.rows);
 };
 
-module.exports = { addAvailability, removeAvailability, getAvailability };
+const setAvailability = async (req, res) => {
+  const { time, service } = req.body; // ✅ Match the actual column names
+
+  if (!time || !service) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+  try {
+    await db.query(
+      "INSERT INTO availability (time, service) VALUES ($1, $2) RETURNING *",
+      [time, service]
+    );
+
+    res.status(201).json({ message: "Availability set successfully" });
+  } catch (error) {
+    console.error("Error saving availability:", error);
+    res.status(500).json({ error: "Database error" });
+  }
+};
+
+
+module.exports = { addAvailability, removeAvailability, getAvailability, setAvailability };
+

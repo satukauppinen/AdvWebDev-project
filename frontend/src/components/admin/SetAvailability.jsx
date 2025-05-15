@@ -1,24 +1,17 @@
 //handles the admin's ability to set available times for booking
 import React, { useState} from 'react';
+import { setAvailability } from '../../../../backend/api/availabilityApi'; 
 
 const SetAvailability = ({ token }) => {
-  const [availableTimes, setAvailableTimes] = useState([]);
-
-  const addTime = (time) => setAvailableTimes([...availableTimes, time]);
+  const [time, setTime] = useState(""); // ✅ Store selected time
+  const [service, setService] = useState("Sheep"); // ✅ Default service value
 
   const saveTimes = async () => {
     try {
-      await fetch('/api/availability', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ times: availableTimes }),
-      });
-      alert('Times saved!');
+      await setAvailability(time, service, token); // ✅ Send single `time` and `service`
+      alert("Times saved!");
     } catch (error) {
-      console.error('Error saving times:', error);
+      alert("Failed to save times.");
     }
   };
 
@@ -27,17 +20,18 @@ const SetAvailability = ({ token }) => {
       <h2>Set Available Times</h2>
       <input
         type="datetime-local"
-        onChange={(e) => addTime(e.target.value)}
+        value={time}
+        onChange={(e) => setTime(e.target.value)} // ✅ Store selected time properly
       />
+      <select value={service} onChange={(e) => setService(e.target.value)}> // ✅ Dropdown for selecting service
+        <option value="Sheep">Sheep</option>
+        <option value="Chicken">Chicken</option>
+        <option value="Gardening">Gardening</option>
+      </select>
       <button onClick={saveTimes}>Save</button>
-      <ul>
-        {availableTimes.map((time, index) => (
-          <li key={index}>{time}</li>
-        ))}
-      </ul>
     </div>
   );
-};
+}
 
 export default SetAvailability;
 // This component allows the admin to set available times for booking.

@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const bookingRoutes = require('./routes/bookingRoutes');
 const adminRoutes = require('../backend/routes/admin');
-const availabilityRoutes = require('./routes/availabilityRoutes');
+const availabilityRoutes = require('../backend/routes/availabilityRoutes');
 
 const app = express();
 
@@ -35,25 +35,25 @@ app.use(
 app.use(helmet.frameguard({ action: 'deny' })); // Anti-clickjacking
 app.use(helmet.noSniff());
 
-// ✅ CORS configuration
+// CORS configuration
 app.use(cors({
     origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
     credentials: true,
 }));
 
-// ✅ Debugging Middleware to Confirm `req.body`
+//  Debugging Middleware to Confirm `req.body`
 app.use((req, res, next) => {
     console.log(`Incoming ${req.method} request to ${req.url}`);
     console.log("Request Body:", req.body);
     next();
 });
 
-// ✅ Routes (Ensure `/api/admin` is correctly registered)
+
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/availability', availabilityRoutes);
 
-// ✅ Error-handling middleware
+
 app.use((err, req, res, next) => {
     console.error("Internal Error:", err.message);
     res.status(500).json({ success: false, error: err.message });

@@ -1,34 +1,31 @@
-// backend/controllers/bookingController.js
-//This file is responsible for handling the booking viewing functionality of the admin.
-const nodemailer = require('nodemailer');
-const pool = require('../db/db'); // ✅ Ensure correct database connection
+// Booking Controller - Handles booking logic for the application
+const nodemailer = require("nodemailer");
+const pool = require("../db/db"); // ✅ Ensure correct database connection
+const { createBookingFromModel, deleteBookingById } = require("../models/bookingModel"); // ✅ Fix naming conflicts
 
 // ✅ Function to create a booking
-const createBooking = async (req, res) => {
+async function createBooking(req, res) {
   try {
     const { name, email, phone, service, time } = req.body;
-  console.log("Received booking request:", req.body);
-
     console.log("Received booking request:", req.body); // ✅ Debugging log
 
     if (!name || !email || !phone || !service || !time) {
-  return res.status(400).json({ message: "All fields are required" });
-}
-
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
     const result = await pool.query(
-  "INSERT INTO public.bookings (time, name, email, phone, service) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-  [time, name, email, phone, service] 
+      "INSERT INTO public.bookings (time, name, email, phone, service) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [time, name, email, phone, service]
     );
 
     require("dotenv").config();
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
     const mailOptions = {
       from: "satukauppinen.profs@gmail.com",
@@ -50,18 +47,41 @@ const transporter = nodemailer.createTransport({
     console.error("Error saving booking:", error);
     res.status(500).json({ message: "Database error" });
   }
-};
+}
 
 // ✅ Function to fetch bookings
-const getBookings = async (req, res) => {
+async function getBookings(req, res) {
   try {
-    const result = await pool.query('SELECT * FROM public.bookings ORDER BY id DESC');
+    const result = await pool.query("SELECT * FROM public.bookings ORDER BY id DESC");
     res.json(result.rows);
   } catch (error) {
     console.error("Error fetching bookings:", error.message);
     res.status(500).json({ success: false, error: error.message });
   }
-};
+}
 
-// ✅ Properly export BOTH functions
-module.exports = { getBookings, createBooking };
+// ✅ Function to delete a booking
+async function deleteBooking(req, res) {
+  try {
+    const { id } = req.params;
+    console.log(`Deleting booking with ID: ${id}`);
+
+    if (!id) {
+      return res.status(400).json({ success: false, error: "Booking ID is required" });
+    }
+
+    const result = await deleteBookingById(id);
+
+    if (!result) {
+      return res.status(404).json({ success: false, error: "Booking not found" });
+    }
+
+    return res.json({ success: true, message: "Booking deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting booking:", error);
+    return res.status(500).json({ success: false, error: "Internal server error" });
+  }
+}
+
+// ✅ Export all functions
+module.exports = { getBookings, createBooking, deleteBooking };
