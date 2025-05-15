@@ -56,7 +56,7 @@ export default function HomePage() {
 
       <section id="services">
   <div className="service-grid">
-    {services.map(service => (  // ✅ Render all services, not filtered ones
+    {services.map(service => (  // 
       <ServiceBox key={service.id} service={service} />
     ))}
   </div>
