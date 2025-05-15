@@ -44,7 +44,7 @@ Needs:
 + Good usability on the website
 + Confirmation after booking
 
-#Use Cases and Usage Scenarios
+# Use Cases and Usage Scenarios
 
 ## 1. Browsing the website
 

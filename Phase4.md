@@ -98,8 +98,8 @@ The environment would have ideally been cloud, now it is just local virtual mach
 
 ## Presentation
 
-Presentation page:
+Presentation page: <a href="https://github.com/satukauppinen/AdvWebDev-project/blob/main/Phase4-Presentation">Here is the presentation md-file</a>
 
 ## Time spent:
 
-A lot
+**80,5h**
