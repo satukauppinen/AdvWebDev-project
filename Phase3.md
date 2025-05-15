@@ -17,11 +17,14 @@ Docker, PostgreSQL. Oh my did this part turn into a mess. After I had been solvi
 The structure and architecture is what it was in the phase 2, just some layout and UI changes and fixes made.
 
 ## Functionalities
-The offered services can be browsed on the website. A customer can open a booking popup on the chosen service, choose an available time from the dropdown menu, then add the asked contact info and book the service, or cancel the process. In the phase 2 I failed with the Nodemailer set up, but I tried again and that is working now, so customer get an email confirmation of their reservation, and the admin has the reservation in their mail too. I am very happy this is now functional. There is an admin route as well, where the admin can set new times and view the booked ones, or should be able to do so. There is a problem with that for some reason. It should work, and the backend at least is working, when looking into the backend side in browser all the data is shown there in JSON format, there are no error messages, the info goes into the database correctly, but the admin dashboard is not displaying it correctly. The booked data does go into the admin mail, so it is save there as well as in the database, and from the database side new times can be set/removed, so the functionality is there, the frontend functionality just is not working as I intended. I will keep on developing.
+The offered services can be browsed on the website. A customer can open a booking popup on the chosen service, choose an available time from the dropdown menu, then add the asked contact info and book the service, or cancel the process. In the phase 2 I failed with the Nodemailer set up, but I tried again and that is working now, so customer get an email confirmation of their reservation, and the admin has the reservation in their mail too. I am very happy this is now functional. There is an admin route as well, where the admin can set neew times available for booking, and view bookings, as well as delete them.
 
 ## Code quality and documentation
-Code quality is okay I hope, there is probably some inconsistancies, and places to improve.
+Code quality is okay I hope, there is probably some inconsistancies, and places to improve but in conclusion, it should be fine.
 
 ## Testing and error handling
 Error handling added to code in many places and seem to be working, and as mentioned, a lot of console.logs are there too to help with debugging. Middleware is set. I have done user testing as a customer and as an admin, which were my two user profiles that need the functionalities. I have run ZAP-tests for security, and added unit test (Jest, React Testing Library). I have successfully ran the unit tests. 
+
+## UI/UX
+As mentioned, the customer side is nice to look at and functional, the admin side is functional but not nice to look at. I will get back to it.
 
