@@ -48,7 +48,7 @@ The start was easy, I set up the backend and frontend because using Node.js, Exp
 
 ##  Reflection and future work
 
-As mentioned, there were a lot of challenges. The latest, and the biggest ones were with apis and especially PostgreSQL, but they were only caused by my stupidity and could have been overcome super simply if I had only noticed what was the issue at once. Certainly that was a learning experience, I have gained a lot of skills with debugging and testing for faults. The UI was quite fine since the beginning, I made some small changes and resolved a small layout issue. I want to fix the two things I noticed were missing/not working when looking through my use cases.
+As mentioned, there were a lot of challenges. The latest, and the biggest ones were with apis and especially PostgreSQL, but they were only caused by my stupidity and could have been overcome super simply if I had only noticed what was the issue at once. Certainly that was a learning experience, I have gained a lot of skills with debugging and testing for faults. The UI on the client side was quite fine since the beginning, I made some small changes and resolved a small layout issue. I want to fix the two things I noticed were missing/not working when looking through my use cases and make the admin side UI nicer, that is not looking too good right now.
 
 ---
 
