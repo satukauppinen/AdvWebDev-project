@@ -32,7 +32,7 @@ const getAvailability = async (req, res) => {
 };
 
 const setAvailability = async (req, res) => {
-  const { time, service } = req.body; // ✅ Match the actual column names
+  const { time, service } = req.body; 
 
   if (!time || !service) {
     return res.status(400).json({ error: "Missing required fields" });

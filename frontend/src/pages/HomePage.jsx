@@ -28,19 +28,19 @@ export default function HomePage() {
 
   
 
-  // ✅ Fetch availability data from the backend API
+  // Fetch availability data from the backend API
   useEffect(() => {
   fetch("/api/bookings")
     .then(res => res.json())
     .then(data => {
-      console.log("Fetched bookings:", data); // ✅ Debugging log
+      console.log("Fetched bookings:", data); // Debugging log
       setBookings(data);
     })
     .catch(error => console.error("Error fetching bookings:", error));
 }, []);
 
 
-  // ✅ Only show available services
+  // Only show available services
   const [bookings, setBookings] = useState([]);
   const availableServices = services.filter(service =>
   !bookings.some(booking => booking.service === service.title)

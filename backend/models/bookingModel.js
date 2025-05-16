@@ -31,7 +31,7 @@ async function deleteBookingById(id) {
     }
 
     console.log("Booking successfully deleted:", result.rows[0]);
-    return result.rows[0]; // ✅ Returns deleted booking details
+    return result.rows[0]; // Returns deleted booking details
   } catch (error) {
     console.error("Database error during booking deletion:", error);
     throw new Error("Failed to delete booking due to database error");

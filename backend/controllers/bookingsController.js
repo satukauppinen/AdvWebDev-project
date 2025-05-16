@@ -31,7 +31,7 @@ async function handleBooking(req, res) {
   }
 }
 
-// ✅ New function to handle booking deletions
+// handle booking deletions
 async function deleteBooking(req, res) {
   try {
     const { id } = req.params;

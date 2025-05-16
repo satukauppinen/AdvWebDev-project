@@ -13,14 +13,14 @@ const app = express();
 
 dotenv.config();
 
-// ✅ Middleware to parse JSON request bodies (must be before routes)
+// Middleware to parse JSON request bodies (must be before routes)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Security headers using Helmet
+// Security headers using Helmet
 app.use(helmet());
 
-// Add specific headers for CSP, anti-clickjacking, etc.
+// Headers for CSP, anti-clickjacking, etc.
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
@@ -66,9 +66,9 @@ app.get("/", (req, res) => {
 
 
 
-// ✅ Start Server
+// Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
-// ✅ Export for testing or further integrations
+// Export for testing or further integrations
 module.exports = app;

@@ -13,14 +13,14 @@ const { Pool } = require('pg');
 // Create PostgreSQL connection pool
 const pool = new Pool({
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD, // Now explicitly passing password
+  password: process.env.DB_PASSWORD, 
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false, // SSL for deployed environments
 });
 
-// Improved query method with error handling
+// query method with error handling
 const query = async (text, params) => {
   try {
     console.log("Executing query:", text);
@@ -32,7 +32,7 @@ const query = async (text, params) => {
   }
 };
 
-// Gracefully close database connections when the app exits
+// close database connections when the app exits
 process.on('exit', () => {
   pool.end(() => console.log("PostgreSQL pool has closed"));
 });

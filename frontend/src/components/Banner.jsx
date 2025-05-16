@@ -1,7 +1,7 @@
 //Banner component, just a picture
 import React from 'react';
-import logoImage from '../assets/logo.png'; // Path to your logo image
-import './Banner.css'; // Optional: style as you like
+import logoImage from '../assets/logo.png'; 
+import './Banner.css'; 
 
 const Banner = () => {
   return (

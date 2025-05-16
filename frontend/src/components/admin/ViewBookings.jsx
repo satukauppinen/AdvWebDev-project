@@ -20,7 +20,7 @@ const handleDelete = async (bookingId) => {
     await fetch(`/api/bookings/${bookingId}`, {
       method: "DELETE",
     });
-    setBookings(bookings.filter((booking) => booking.id !== bookingId)); // ✅ Update UI instantly
+    setBookings(bookings.filter((booking) => booking.id !== bookingId)); // Update UI instantly
   } catch (error) {
     console.error("Error deleting booking:", error);
   }
@@ -51,7 +51,7 @@ const handleDelete = async (bookingId) => {
               <td>{booking.phone}</td>
               <td>{booking.service}</td>
               <td>
-        <button onClick={() => handleDelete(booking.id)}>❌</button> {/* ✅ Delete button */}
+        <button onClick={() => handleDelete(booking.id)}>❌</button> 
       </td>
             </tr>
           ))}

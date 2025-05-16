@@ -1,4 +1,4 @@
-//import axios from 'axios';
+
 //API calls for booking management for the admin
 import { API_URL } from "./config";
 
@@ -18,7 +18,7 @@ export const fetchBookings = async () => {
 };
 
 export const createBooking = async (bookingData) => {
-  console.log("Booking Data Being Sent:", bookingData); // ✅ Debugging log
+  console.log("Booking Data Being Sent:", bookingData); //  Debugging log
 
   try {
     const response = await fetch("/api/bookings", {

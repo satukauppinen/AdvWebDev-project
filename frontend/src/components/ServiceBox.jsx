@@ -6,7 +6,7 @@ export default function ServiceBox({ service, onBook }) {
       <div className="service-box">
         <img src={service.image} alt={service.title} className="service-image"/>
         
-        {/* ✅ Make the title clickable */}
+        
         <h3>
           <a href={`#service-${service.id}`} className="service-title">
             {service.title}

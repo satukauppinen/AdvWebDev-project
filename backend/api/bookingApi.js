@@ -18,12 +18,12 @@ export async function createBooking(data) {
 export async function fetchBookings(token) {
   const res = await fetch(`/api/bookings`, {
     headers: {
-      Authorization: token ? `Bearer ${token}` : "",  // ✅ Ensure token is included
+      Authorization: token ? `Bearer ${token}` : "",  // Ensure token is included
       "Content-Type": "application/json",
     },
   });
 
-  console.log("API Response Status:", res.status); // ✅ Debugging log
+  console.log("API Response Status:", res.status); // Debugging log
   const data = await res.json();
   console.log("API Response Data:", data);
 

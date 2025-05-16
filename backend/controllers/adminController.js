@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('../db/db'); 
 
-// ✅ Admin login function
+// Admin login function
 exports.loginAdmin = async (req, res) => {
   const username = req.body.username.trim();
   const password = req.body.password.trim();
@@ -12,7 +12,7 @@ exports.loginAdmin = async (req, res) => {
   }
 
   try {
-    // ✅ Debugging: Log database query results
+    // Debugging: Log database query results
     console.log("Checking for admin with username:", username);
 
     const debugResult = await pool.query('SELECT username FROM public.admins');
@@ -37,7 +37,7 @@ console.log("All stored usernames in database:", debugResult.rows);
     console.log("Entered password:", password);
     console.log("Password comparison result:", await bcrypt.compare(password, admin.password));
 
-    // ✅ Check if password verification is working correctly
+    // Check if password verification is working correctly
     const match = await bcrypt.compare(password, admin.password);
     console.log("Password comparison result:", match);
 
@@ -60,13 +60,12 @@ console.log("All stored usernames in database:", debugResult.rows);
 };
 
 
-// ✅ Correctly placed `getAdminData` function
+
 exports.getAdminData = async (req, res) => {
   try {
-    const result = await pool.query('SELECT id, username, email, role FROM admins'); // ✅ Fetch admin data
-    res.json(result.rows); // ✅ Send JSON response
+    const result = await pool.query('SELECT id, username, email, role FROM admins'); 
   } catch (error) {
     console.error("Error fetching admin data:", error.message);
-    res.status(500).json({ success: false, error: error.message }); // ✅ Handle errors properly
+    res.status(500).json({ success: false, error: error.message }); 
   }
 };

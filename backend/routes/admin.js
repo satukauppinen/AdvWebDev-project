@@ -11,7 +11,7 @@ const verifyToken = require('../middleware/authMiddleware');
 // Public login
 router.post('/login', loginAdmin);
     
-// ✅ Define GET route for `/api/admin`
+// GET route for `/api/admin`
 router.get('/', verifyToken, getAdminData); 
 
 // Protected routes

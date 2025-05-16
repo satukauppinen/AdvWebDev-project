@@ -3,7 +3,7 @@ import {API_URL} from './config';
 
 export const setAvailability = async (time, service, token) => {
   try {
-    const response = await fetch(`${API_URL}/availability`, {  // ✅ Uses API_URL
+    const response = await fetch(`${API_URL}/availability`, {  
       method: "POST",
       headers: {
         "Content-Type": "application/json",

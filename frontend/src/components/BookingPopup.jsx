@@ -14,7 +14,7 @@ export default function BookingPopup({ service, onClose }) {
   const [availableTimes, setAvailableTimes] = useState([]);
   const [bookings, setBookings] = useState([]);
 
-  // ✅ Formatting function to convert ISO timestamps to "YYYY-MM-DD HH:MM"
+  // Formatting function to convert ISO timestamps to "YYYY-MM-DD HH:MM"
   const formatTime = (isoString) => {
     const date = new Date(isoString);
     const year = date.getFullYear();
@@ -26,18 +26,18 @@ export default function BookingPopup({ service, onClose }) {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   };
 
-  // ✅ Fetch available times from backend
+  // Fetch available times from backend
   useEffect(() => {
     fetch("/api/availability")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched available times:", data);
-        setAvailableTimes(data.map((entry) => formatTime(entry.time))); // ✅ Format fetched times
+        setAvailableTimes(data.map((entry) => formatTime(entry.time))); 
       })
       .catch((error) => console.error("Error fetching availability:", error));
   }, []);
 
-  // ✅ Fetch existing bookings to filter out unavailable times
+  // Fetch existing bookings to filter out unavailable times
   useEffect(() => {
     fetch("/api/bookings")
       .then((res) => res.json())
@@ -48,7 +48,7 @@ export default function BookingPopup({ service, onClose }) {
       .catch((error) => console.error("Error fetching bookings:", error));
   }, []);
 
-  // ✅ Filter out already booked times
+  // Filter out already booked times
   const filteredTimes = availableTimes.filter(
     (time) => !bookings.some((booking) => booking.time === time && booking.service === service.title)
   );
@@ -75,7 +75,7 @@ export default function BookingPopup({ service, onClose }) {
           <option value="">Select a time</option>
           {filteredTimes.map((time) => (
             <option key={time} value={time}>
-              {time} {/* ✅ Properly formatted time now appears here */}
+              {time} 
             </option>
           ))}
         </select>

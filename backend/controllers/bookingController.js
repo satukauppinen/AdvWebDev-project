@@ -1,13 +1,13 @@
 // Booking Controller - Handles booking logic for the application
 const nodemailer = require("nodemailer");
-const pool = require("../db/db"); // ✅ Ensure correct database connection
-const { createBookingFromModel, deleteBookingById } = require("../models/bookingModel"); // ✅ Fix naming conflicts
+const pool = require("../db/db"); 
+const { createBookingFromModel, deleteBookingById } = require("../models/bookingModel"); 
 
 // ✅ Function to create a booking
 async function createBooking(req, res) {
   try {
     const { name, email, phone, service, time } = req.body;
-    console.log("Received booking request:", req.body); // ✅ Debugging log
+    console.log("Received booking request:", req.body); // Debugging log
 
     if (!name || !email || !phone || !service || !time) {
       return res.status(400).json({ message: "All fields are required" });
@@ -49,7 +49,7 @@ async function createBooking(req, res) {
   }
 }
 
-// ✅ Function to fetch bookings
+// Function to fetch bookings
 async function getBookings(req, res) {
   try {
     const result = await pool.query("SELECT * FROM public.bookings ORDER BY id DESC");
@@ -60,7 +60,7 @@ async function getBookings(req, res) {
   }
 }
 
-// ✅ Function to delete a booking
+// Function to delete a booking
 async function deleteBooking(req, res) {
   try {
     const { id } = req.params;
@@ -83,5 +83,5 @@ async function deleteBooking(req, res) {
   }
 }
 
-// ✅ Export all functions
+// Export all functions
 module.exports = { getBookings, createBooking, deleteBooking };

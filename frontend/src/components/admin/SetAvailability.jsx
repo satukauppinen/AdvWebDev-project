@@ -3,12 +3,12 @@ import React, { useState} from 'react';
 import { setAvailability } from '../../../../backend/api/availabilityApi'; 
 
 const SetAvailability = ({ token }) => {
-  const [time, setTime] = useState(""); // ✅ Store selected time
-  const [service, setService] = useState("Sheep"); // ✅ Default service value
+  const [time, setTime] = useState(""); // Store selected time
+  const [service, setService] = useState("Sheep"); // Default service value
 
   const saveTimes = async () => {
     try {
-      await setAvailability(time, service, token); // ✅ Send single `time` and `service`
+      await setAvailability(time, service, token); 
       alert("Times saved!");
     } catch (error) {
       alert("Failed to save times.");
@@ -21,9 +21,9 @@ const SetAvailability = ({ token }) => {
       <input
         type="datetime-local"
         value={time}
-        onChange={(e) => setTime(e.target.value)} // ✅ Store selected time properly
+        onChange={(e) => setTime(e.target.value)} 
       />
-      <select value={service} onChange={(e) => setService(e.target.value)}> // ✅ Dropdown for selecting service
+      <select value={service} onChange={(e) => setService(e.target.value)}> 
         <option value="Sheep">Sheep</option>
         <option value="Chicken">Chicken</option>
         <option value="Gardening">Gardening</option>

@@ -1,7 +1,7 @@
 //Info about the farm 
 import React from 'react';
-import farmImage from '../assets/farm.jpg'; // Path to your background image
-import './AboutUs.css'; // Optional: style as you like
+import farmImage from '../assets/farm.jpg'; 
+import './AboutUs.css'; 
 
 const AboutUs = () => {
   return (
